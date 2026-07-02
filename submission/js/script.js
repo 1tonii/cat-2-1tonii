@@ -101,5 +101,10 @@ window.addEventListener("load", function () {
 
         });
     }
+let banner = document.querySelector(".banner");
+let bannerText = document.querySelector("#bannerText");
 
+banner.addEventListener("click", function () {
+    bannerText.classList.toggle("hidden");
+});
 });

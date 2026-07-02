@@ -1,0 +1,20 @@
+Implementation Notes
+
+1. Dynamic Product List
+- Used a JavaScript array of objects.
+- Displayed products using forEach().
+
+2. Customer Wishlist
+- Users can add products.
+- Users can remove products.
+
+3. Form Validation
+- Used event.preventDefault().
+- Displayed validation and success messages.
+
+4. Local Storage
+- Wishlist is saved using localStorage.
+- Wishlist loads automatically after refreshing.
+
+5. Banner Click Toggle
+- to be investigated abit further(not fully understood to be working)
