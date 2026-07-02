@@ -42,6 +42,7 @@ let wishListInput = document.querySelector("#wishlistInput");
 let wishListButton = document.querySelector("#wishlistForm button");
 let wishListItems = document.querySelector("#wishlistItems");
  let formMessage = document.querySelector("#formMessage");
+ let wishlist = [];
 wishListButton.addEventListener("click", function(event){
 
     event.preventDefault();
@@ -67,10 +68,38 @@ wishListButton.addEventListener("click", function(event){
 
     li.appendChild(deleteButton);
     wishListItems.appendChild(li);
+    wishlist.push(productName);
+localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
     wishListInput.value = "";
 
     formMessage.textContent = "Item added successfully";
     formMessage.style.color = "green";
 }
+});
+window.addEventListener("load", function () {
+
+    let saved = localStorage.getItem("wishlist");
+
+    if (saved) {
+        wishlist = JSON.parse(saved);
+
+        wishlist.forEach(function (item) {
+
+            let li = document.createElement("li");
+            li.textContent = item;
+
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Remove";
+
+            deleteButton.addEventListener("click", function () {
+                li.remove();
+            });
+
+            li.appendChild(deleteButton);
+            wishListItems.appendChild(li);
+
+        });
+    }
+
 });
