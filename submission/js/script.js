@@ -36,3 +36,38 @@ products.forEach(function(product){
     productsContainer.appendChild(productCard);
 
 });
+// Customer Wishlist
+
+let wishListInput = document.querySelector("#wishlistInput");
+let wishListButton = document.querySelector("#wishlistForm button");
+let wishListItems = document.querySelector("#wishlistItems");
+
+wishListButton.addEventListener("click", function(event){
+
+    event.preventDefault();
+
+    let productName = wishListInput.value;
+
+    if(productName != ""){
+
+        let li = document.createElement("li");
+        li.textContent = productName;
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove";
+
+        deleteButton.addEventListener("click", function(){
+
+            li.remove();
+
+        });
+
+        li.appendChild(deleteButton);
+
+        wishListItems.appendChild(li);
+
+        wishListInput.value = "";
+
+    }
+
+});
