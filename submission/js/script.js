@@ -41,33 +41,36 @@ products.forEach(function(product){
 let wishListInput = document.querySelector("#wishlistInput");
 let wishListButton = document.querySelector("#wishlistForm button");
 let wishListItems = document.querySelector("#wishlistItems");
-
+ let formMessage = document.querySelector("#formMessage");
 wishListButton.addEventListener("click", function(event){
 
     event.preventDefault();
 
-    let productName = wishListInput.value;
+    let productName = wishListInput.value.trim();
 
-    if(productName != ""){
+    if (productName === "") {
 
-        let li = document.createElement("li");
-        li.textContent = productName;
+    formMessage.textContent = "Please enter a product name";
+    formMessage.style.color = "red";
 
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Remove";
+} else {
 
-        deleteButton.addEventListener("click", function(){
+            let li = document.createElement("li");
+    li.textContent = productName;
 
-            li.remove();
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Remove";
 
-        });
+    deleteButton.addEventListener("click", function(){
+        li.remove();
+    });
 
-        li.appendChild(deleteButton);
+    li.appendChild(deleteButton);
+    wishListItems.appendChild(li);
 
-        wishListItems.appendChild(li);
+    wishListInput.value = "";
 
-        wishListInput.value = "";
-
-    }
-
+    formMessage.textContent = "Item added successfully";
+    formMessage.style.color = "green";
+}
 });
