@@ -192,4 +192,7 @@ footer hr {
     main {
         width: 95%;
     }
+    .hidden {
+    display: none;
+}
 }
